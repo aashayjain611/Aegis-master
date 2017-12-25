@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,9 +39,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            return;
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -70,31 +74,38 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager=getSupportFragmentManager();
+        ImageView imageView=(ImageView)findViewById(R.id.logo);
 
         if (id == R.id.fire) {
             fragmentManager.beginTransaction().replace(R.id.content_main,new FireSafety()).commit();
-
+            imageView.setVisibility(View.GONE);
         }
         else if (id == R.id.earthquake) {
             fragmentManager.beginTransaction().replace(R.id.content_main,new EarthquakeFragment()).commit();
+            imageView.setVisibility(View.GONE);
         }
         else if (id == R.id.fireExtinguisher) {
             fragmentManager.beginTransaction().replace(R.id.content_main,new fireExtinguisherFragment()).commit();
+            imageView.setVisibility(View.GONE);
         }
         else if (id == R.id.cpr) {
             fragmentManager.beginTransaction().replace(R.id.content_main,new Cpr()).commit();
-
+            imageView.setVisibility(View.GONE);
         }
-        else if (id == R.id.sos) {
-
+        else if (id == R.id.sos)
+        {
+            imageView.setVisibility(View.GONE);
             fragmentManager.beginTransaction().replace(R.id.content_main,new Sos()).commit();
         }
         else if (id == R.id.about) {
-
+            fragmentManager.beginTransaction().replace(R.id.content_main,new AboutActivity()).commit();
+            imageView.setVisibility(View.GONE);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
+

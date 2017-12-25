@@ -9,11 +9,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Aishwarya on 09-10-2017.
- */
-
-public class Cpr extends Fragment {
+public class AboutActivity extends Fragment
+{
     View myView;
 
     @Override
@@ -23,7 +20,7 @@ public class Cpr extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        myView = inflater.inflate(R.layout.cpr,container,false);
+        myView = inflater.inflate(R.layout.activity_about,container,false);
         return myView;
     }
 
@@ -31,5 +28,4 @@ public class Cpr extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
     }
-
 }
